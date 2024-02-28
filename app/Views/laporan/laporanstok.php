@@ -32,7 +32,28 @@
         Toko : SCADAMART
     </div>
     <div class="col-3 text-left">
-        Tanggal : <?php  echo  date("F Y"); ?>
+        Tanggal :                             <?php
+// Array nama-nama hari dalam bahasa Indonesia
+$nama_hari = array("Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu");
+
+// Array nama-nama bulan dalam bahasa Indonesia
+$nama_bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+
+// Mendapatkan tanggal hari ini
+$tanggal_hari_ini = date("Y-m-d");
+
+// Mendapatkan nama hari berdasarkan tanggal hari ini
+$nama_hari_ini = date("w", strtotime($tanggal_hari_ini));
+
+// Mendapatkan nama bulan berdasarkan tanggal hari ini
+$bulan_hari_ini = date("n", strtotime($tanggal_hari_ini)) - 1;
+
+// Mendapatkan tahun berdasarkan tanggal hari ini
+$tahun_hari_ini = date("Y", strtotime($tanggal_hari_ini));
+
+// Mencetak tanggal hari ini dengan nama hari dan bulan dalam bahasa Indonesia
+echo $nama_hari[$nama_hari_ini] . " " . date("d", strtotime($tanggal_hari_ini)) . " " . $nama_bulan[$bulan_hari_ini] . " " . $tahun_hari_ini;
+?>
 
     </div>
     

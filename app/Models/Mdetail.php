@@ -41,9 +41,10 @@ class Mdetail extends Model
     public function getDetailPenjualan($idPenjualan)
     {
         return $this->db->table('detail_penjualan')
-                    ->select('detail_penjualan.*, penjualan.no_transaksi,produk.nama_produk')
+                    ->select('detail_penjualan.*, penjualan.no_transaksi,produk.nama_produk,satuan.nama_satuan')
                     ->join('penjualan', 'penjualan.id_penjualan = detail_penjualan.id_penjualan')
                     ->join('produk', 'produk.id_produk = detail_penjualan.id_produk')
+                    ->join('satuan','satuan.id_satuan = produk.id_satuan')
                     ->where('detail_penjualan.id_penjualan', $idPenjualan)
                     ->get()
                     ->getResultArray();

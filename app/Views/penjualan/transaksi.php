@@ -83,21 +83,13 @@ if (session()->has('hapus')) {
                   </div>
                 </div>
                 <div class="col">
-                  <div class="row">
-                    <div class="col">
-                    <p>Tanggal : <?php 
-                      date_default_timezone_set('Asia/Jakarta');
-                      echo date("Y-m-d H:i:s");
-                      ?>
-                      </p>
-                    </div>
-                    </div>
                     <table  class="table table-sm table-striped">
                 <thead>
                  <tr>
                 <th>No</th>
                 <th>Nama Barang</th>
                 <th>Jumlah</th>
+                <th>Satuan</th>
                 <th>Harga</th>
                 </tr>
                 </thead>
@@ -109,6 +101,7 @@ if (session()->has('hapus')) {
         <td><?= $no++; ?></td>
         <td><?= $detail['nama_produk']; ?></td>
         <td  style="text-align: center;">X<?= $detail['qty']; ?></td>
+        <td><?= $detail['nama_satuan']; ?></td>
         <td><?= number_format($detail['total_harga'], 0, ',', '.'); ?></td>
     </tr>
 <?php endforeach;
@@ -138,9 +131,8 @@ else: ?>
                                         <input type="text" name="kembali" class="form-control" id="kembali" readonly>
                                     </div>
                       <div class="card-footer text-end">
-                      <a href="<?=site_url('pembayaran')?>" class="btn btn-primary">
-                        SIMPAN
-                      </a>
+                      <button id="btnBayar" class="btn btn-primary" onclick="redirectToRoute()">Bayar</button>
+                   
             
                     </div>
                   </div>
@@ -150,13 +142,21 @@ else: ?>
 
           </div>
         </div>
-   
         <script>
+    function redirectToRoute() {
+        window.location.href = '<?= site_url('pembayaran') ?>';
+    }
+</script>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         // Ambil elemen-elemen yang diperlukan
         var txtBayar = document.getElementById('txtbayar');
+        var btnBayar = document.getElementById('btnBayar'); // Tombol untuk melakukan pembayaran
         var kembali = document.getElementById('kembali');
         var totalHarga = <?= $totalHarga ?>; // Ambil total harga dari controller dan diteruskan ke view
+
+        // Nonaktifkan tombol pembayaran dari awal
+        btnBayar.disabled = true;
 
         // Tambahkan event listener untuk memantau perubahan pada input bayar
         txtBayar.addEventListener('input', function() {
@@ -169,11 +169,16 @@ else: ?>
             // Tampilkan kembaliannya pada input kembali
             if (kembalian >= 0) {
                 kembali.value = kembalian.toFixed(2).replace(/(\.00)+$/, ''); // Menampilkan hingga 2 digit desimal
+                // Aktifkan tombol pembayaran jika bayar cukup
+                btnBayar.disabled = false;
             } else {
                 kembali.value = '0'; // Jika kembalian negatif, tampilkan '0.00'
+                // Nonaktifkan tombol pembayaran jika bayar kurang
+                btnBayar.disabled = true;
             }
         });
     });
-    
 </script>
+
+
 <?= $this->endSection();?>

@@ -59,23 +59,23 @@
                         <div class="row align-items-center">
                           <div class="col-auto">
                             <span class="bg-green text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/shopping-cart -->
-                              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 17h-11v-14h-2" /><path d="M6 5l14 1l-1 7h-13" /></svg>
-                            </span>
+                            <i class="bi bi-cash-coin"></i>
+                          </span>
                           </div>
                           <div class="col">
                           <?php
-                          if(isset($DailyPenjualan)) :
-                          foreach($DailyPenjualan as $baris) :  
+                          if(isset($laba)) :
+                          foreach($laba as $baris) :  
                           ?>
                             <div class="font-weight-medium">
-                            <b><?= $baris->total_penjualan ?> TRANSAKSI</b>
+                            <b>Rp. <?= number_format($baris->total_keuntungan)?></b>
                             </div>
                             <?php
                         endforeach;
                         endif;
                         ?>
                             <div class="text-muted">
-                              Total Penjualan Hari ini
+                              Total Keuntungan Hari ini
                             </div>
                           </div>
                         </div>
@@ -87,9 +87,9 @@
                       <div class="card-body">
                         <div class="row align-items-center">
                         <div class="col-auto">
-                        <a href="<?= site_url('laporan-stok') ?>" class="text-white avatar" style="background-color: red; display: inline-block; padding: 10px; border-radius: 50%;">
-                       <i class="bi bi-box-seam-fill"></i>
-                      </a>
+<div class="text-white avatar" style="background-color: red; display: inline-block; padding: 10px;">
+                        <i class="bi bi-graph-down-arrow"></i>
+                      </div>
                       </div>
                           <div class="col">
                           <?php
@@ -97,10 +97,10 @@
                           foreach($stokLow as $baris) :  
                           ?>
                             <div class="font-weight-medium">
-                            <b><?= $baris->total_low_stock ?> PRODUK HAMPIR HABIS</b>
+                            <b>Rp. <?= $baris->total_low_stock ?></b>
                             </div>
                             <div class="text-muted">
-                              Lihat detail pada laporan stok
+                              Total kerugian bulan ini
                             </div>
                             <?php
                         endforeach;

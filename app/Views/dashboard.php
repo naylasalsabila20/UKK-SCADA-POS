@@ -75,7 +75,7 @@
                         endif;
                         ?>
                             <div class="text-muted">
-                              Total Penjualan Hari ini
+                              Penjualan Hari ini
                             </div>
                           </div>
                         </div>
@@ -117,15 +117,38 @@
                         <div class="row align-items-center">
                           <div class="col-auto">
                             <span class="bg-facebook text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/brand-facebook -->
-                              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /></svg>
-                            </span>
+                            <i class="bi bi-calendar3"></i>
+                          </span>
                           </div>
                           <div class="col">
                             <div class="font-weight-medium">
-                              132 Likes
+                              <b>
+                            <?php
+// Array nama-nama hari dalam bahasa Indonesia
+$nama_hari = array("Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu");
+
+// Array nama-nama bulan dalam bahasa Indonesia
+$nama_bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+
+// Mendapatkan tanggal hari ini
+$tanggal_hari_ini = date("Y-m-d");
+
+// Mendapatkan nama hari berdasarkan tanggal hari ini
+$nama_hari_ini = date("w", strtotime($tanggal_hari_ini));
+
+// Mendapatkan nama bulan berdasarkan tanggal hari ini
+$bulan_hari_ini = date("n", strtotime($tanggal_hari_ini)) - 1;
+
+// Mendapatkan tahun berdasarkan tanggal hari ini
+$tahun_hari_ini = date("Y", strtotime($tanggal_hari_ini));
+
+// Mencetak tanggal hari ini dengan nama hari dan bulan dalam bahasa Indonesia
+echo $nama_hari[$nama_hari_ini] . " " . date("d", strtotime($tanggal_hari_ini)) . " " . $nama_bulan[$bulan_hari_ini] . " " . $tahun_hari_ini;
+?></b>
+
                             </div>
                             <div class="text-muted">
-                              21 today
+                              Hari ini
                             </div>
                           </div>
                         </div>
@@ -149,6 +172,7 @@
                 <th>Nomor Transaksi</th>
                 <th>Nama Produk</th>
                 <th>Qty</th>
+                <th>Nama Sataun</th>
                 <th>Harga</th>
                 </tr>
                 </thead>
@@ -163,6 +187,7 @@
                    $html .='<td>'. $baris->no_transaksi.'</td>';
                    $html .='<td>'. $baris->nama_produk.'</td>';
                    $html .='<td>'. $baris->qty.'</td>';
+                   $html .='<td>'. $baris->nama_satuan.'</td>';
                    $html .='<td>'.number_format($baris->total_harga,0,',','.').'</td>';
                    $html .='</tr>';
                     endforeach;
