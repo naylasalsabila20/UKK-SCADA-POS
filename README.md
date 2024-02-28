@@ -25,5 +25,5 @@ Dilengkapi dengan fitur:
 2. Jalankan perintah php spark serve
 3. Buka browser, akses URL http://localhost:8080
 ## DEMO
-![Teks Alternatif](demo home.png)
+![Teks Alternatif](https://github.com/naylasalsabila20/UKK-SCADA-POS/blob/main/demohome.png)
 
