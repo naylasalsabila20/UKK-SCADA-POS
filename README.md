@@ -1,67 +1,39 @@
-# CodeIgniter 4 Application Starter
+# APLIKASI KASIR CI-4
+Aplikasi ini merupakan contoh project uji kompetensi program keahlian Rekayasa Perangkat Lunak tahun 2023/2024.
+Dilengkapi dengan fitur:
+1. LOGIN
+2. CRUD PENGGUNA, SATUAN, KATEGORI, PRODUK
+3. TRANSAKSI
+4. CETAK LAPORAN STOK
+## Download dan Instalasi
+1. Jalankan CMD / Terminal
+2. Masuk ke drive D: atau yang lain jika di linux silahkan masuk direktori mana saja
+3. Jalankan perintah :
+   <code> git clone https://github.com/naylasalsabila20/UKK-SCADA-POS.git</code>
+4. Lakukan update dengan perintah composer update
+5. Ganti file env dengan .env
+6. Seting :
+   <code> CI_ENVIRONMENT = development atau production
+   app.baseURL = 'http://localhost:8080'
+   database.default.hostname = localhost
+   database.default.database = scada_pos
+   database.default.username = root
+   database.default.password = 
+   database.default.DBDriver = MySQLi
+## Menjalankan Aplikasi
+1. Buka terminal
+2. Jalankan perintah php spark serve
+3. Buka browser, akses URL http://localhost:8080
+## DEMO
+Home
+![Teks Alternatif](https://github.com/naylasalsabila20/UKK-SCADA-POS/blob/main/demohome.png)
 
-## What is CodeIgniter?
+Master data
+![Teks Alternatif](https://github.com/naylasalsabila20/UKK-SCADA-POS/blob/main/demomasterdata.png)
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Transaksi
+![Teks Alternatif](https://github.com/naylasalsabila20/UKK-SCADA-POS/blob/main/demotransaksi.png)
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+CETAK LAPORAN STOK
+![Teks Alternatif](https://github.com/naylasalsabila20/UKK-SCADA-POS/blob/main/demolaporanstok.png)
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
-
-The user guide corresponding to the latest version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
-
-## Installation & updates
-
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
-
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
-
-## Setup
-
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
-
-## Important Change with index.php
-
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
-
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
-
-**Please** read the user guide for a better explanation of how CI4 works!
-
-## Repository Management
-
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Server Requirements
-
-PHP version 7.4 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> **Warning**
-> The end of life date for PHP 7.4 was November 28, 2022. If you are
-> still using PHP 7.4, you should upgrade immediately. The end of life date
-> for PHP 8.0 will be November 26, 2023.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
