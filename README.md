@@ -5,7 +5,6 @@ Dilengkapi dengan fitur:
 2. CRUD PENGGUNA, SATUAN, KATEGORI, PRODUK
 3. TRANSAKSI
 4. CETAK LAPORAN STOK
-
 ## Download dan Instalasi
 1. Jalankan CMD / Terminal
 2. Masuk ke drive D: atau yang lain jika di linux silahkan masuk direktori mana saja
@@ -16,7 +15,6 @@ Dilengkapi dengan fitur:
 6. Seting :
    <code> CI_ENVIRONMENT = development atau production
    app.baseURL = 'http://localhost:8080'
-
    database.default.hostname = localhost
    database.default.database = scada_pos
    database.default.username = root
@@ -26,5 +24,6 @@ Dilengkapi dengan fitur:
 1. Buka terminal
 2. Jalankan perintah php spark serve
 3. Buka browser, akses URL http://localhost:8080
-
 ## DEMO
+![Teks Alternatif](demo home.png)
+
