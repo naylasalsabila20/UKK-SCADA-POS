@@ -88,4 +88,24 @@ public function laba(){
     $queryPenjualan=$penjualan->query("CALL hitung_keuntungan()")->getResult();
     return $queryPenjualan;
 }
+public function cariLaporan($bulan, $tahun){
+    $penjualan = new MPenjualan;
+    $queryPenjualan = $penjualan->query("CALL tampilkan_data_penjualan_per_hari('" . $bulan . "', '" . $tahun . "')")->getResult();
+    return $queryPenjualan; 
+}
+public function hitungLaporan($bulan, $tahun){
+    $penjualan = new MPenjualan;
+    $queryPenjualan = $penjualan->query("CALL hitung_total_penjualan_keuntungan('" . $bulan . "', '" . $tahun . "')")->getResult();
+    return $queryPenjualan; 
+}
+public function totalperbulan(){
+    $penjualan= NEW MPenjualan;
+    $queryPenjualan=$penjualan->query("CALL hitung_total_penjualan_bulan_ini()")->getResult();
+    return $queryPenjualan;
+}
+public function keuntunganperbulan(){
+    $penjualan= NEW MPenjualan;
+    $queryPenjualan=$penjualan->query("CALL hitung_total_keuntungan_bulan_ini()")->getResult();
+    return $queryPenjualan;
+}
 }

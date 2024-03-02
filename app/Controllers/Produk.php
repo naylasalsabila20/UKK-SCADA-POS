@@ -13,7 +13,8 @@ class Produk extends BaseController
             'listProduk'=>$this->produk->getAllProduk(),
             'listSatuan'=>$this->satuan->getAllSatuan(),
             'listKategori'=>$this->kategori->getAllKategori(),
-            'DataProduk'=>$this->produk->getData()
+            'DataProduk'=>$this->produk->getData(),
+            'lastProductId'=>$this->produk->getNextId()
             
         ];
         return view('master-data/produk/list-produk',$data);

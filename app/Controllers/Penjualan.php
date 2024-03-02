@@ -113,9 +113,55 @@ class Penjualan extends BaseController
                 'listDetailPenjualan'=>$this->detail->getDailyDetailPenjualan(),
                 'stokLow'=>$this->produk->jumlahStokHabis(), 
                 'laba'=>$this->penjualan->laba(), 
+                'total'=>$this->penjualan->totalperbulan(),
+                'untung'=>$this->penjualan->keuntunganperbulan()
             ];
   
         return view('laporan/list-penjualan',$data);
+    }
+    public function carilaporan()
+    {
+        // Aturan validasi
+        $rules = [
+            'bulan' => 'required',
+            'tahun' => 'required'
+        ];
+    
+        // Lakukan validasi
+        if ($this->validate($rules)) {
+            // Jika validasi berhasil, ambil bulan dan tahun dari inputan pengguna
+            $bulan = $this->request->getPost('bulan');
+            $tahun = $this->request->getPost('tahun');
+    
+            // Ambil data yang diperlukan
+            $data = [
+                'DailySell'=>$this->penjualan->getDailySell(),   
+                'DailyPenjualan'=>$this->penjualan->getDailyPenjualan(),  
+                'listDetailPenjualan'=>$this->detail->getDailyDetailPenjualan(),
+                'stokLow'=>$this->produk->jumlahStokHabis(), 
+                'laba'=>$this->penjualan->laba(), 
+                'carilaporan' => $this->penjualan->cariLaporan($bulan, $tahun),
+                'hitunglaporan' => $this->penjualan->hitungLaporan($bulan, $tahun)
+            ];
+   
+            // Tampilkan view dengan data yang diperoleh
+            return view('laporan/cari-laporan', $data);
+        } else {
+            // Jika validasi gagal, tampilkan halaman dengan pesan kesalahan
+            return view('laporan/cari-laporan', ['validation' => $this->validator]);
+        }
+    }
+    public function cetakHariini(){
+        $data=[
+            'DailySell'=>$this->penjualan->getDailySell(),   
+            'DailyPenjualan'=>$this->penjualan->getDailyPenjualan(),  
+            'listDetailPenjualan'=>$this->detail->getDailyDetailPenjualan(),
+            'stokLow'=>$this->produk->jumlahStokHabis(), 
+            'laba'=>$this->penjualan->laba(), 
+            'total'=>$this->penjualan->totalperbulan(),
+            'untung'=>$this->penjualan->keuntunganperbulan()
+        ];
+        return view('laporan/cetak-laporan-hari-ini',$data);
     }
     
 }

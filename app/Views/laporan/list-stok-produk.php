@@ -49,8 +49,8 @@ if (session()->has('hapus')) {
                 <th>Nama Produk</th>
                 <th>Satuan</th>
                 <th>Kategori</th>
-                <th>Harga Jual</th>
                 <th>Harga Beli</th>
+                <th>Harga Jual</th>
                 <th>Stok</th>
                 </tr>
                 </thead>

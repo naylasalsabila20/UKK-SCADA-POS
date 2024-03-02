@@ -59,3 +59,6 @@ $routes->get('/pembayaran','Penjualan::simpanPembayaran',['filter'=>'autentifika
 $routes->get('/catak-laporan-stok','Produk::laporanStok',['filter'=>'autentifikasi']);
 $routes->get('/laporan-stok','Produk::listStok',['filter'=>'autentifikasi']);
 $routes->get('/laporan-penjualan','Penjualan::listPenjualan',['filter'=>'autentifikasi']);
+$routes->post('/cari-laporan-penjualan','Penjualan::carilaporan',['filter'=>'autentifikasi']);
+
+$routes->get('/catak-laporan-penjualan-hari-ini','Penjualan::cetakHariini',['filter'=>'autentifikasi']);

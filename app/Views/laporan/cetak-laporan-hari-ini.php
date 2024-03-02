@@ -26,7 +26,7 @@
     </style>
 </head>
 <body>
-    <h3 class="text-center">LAPORAN STOK BARANG</h3>
+    <h3 class="text-center">LAPORAN PENJUALAN HARI INI</h3>
 <div class="row">
     <div class="col">
         Toko : SCADAMART
@@ -56,37 +56,54 @@ echo $nama_hari[$nama_hari_ini] . " " . date("d", strtotime($tanggal_hari_ini)) 
 ?>
 
     </div>
-    
+</div>
+<div class="row">
+    <div class="col"><b>Total Keuntungan :   <?php
+                          if(isset($laba)) :
+                          foreach($laba as $baris) :  
+                          ?>
+                            <b>Rp. <?= number_format($baris->total_keuntungan)?></b>
+                            <?php
+                        endforeach;
+                        endif;
+                        ?></b>
+                        </div>
+                        <div class="col-3 text-left">
+                            <b>Total Penjualan :
+                        <?php
+                          if(isset($DailySell)) :
+                          foreach($DailySell as $baris) :  
+                          ?>
+                           <b> Rp. <?= number_format($baris->total_harian) ?></b>
+                            <?php
+                        endforeach;
+                        endif;
+                        ?></b>
+                    </div>
 </div>
 <div class="p-2"></div>
-<table  class="table table-sm table-striped table-bordered text-center">
+<table id="myTable" class="table table-sm table-striped table-bordered text-center">
                 <thead>
                  <tr>
                 <th>No</th>
-                <th>Kode Produk</th>
+                <th>Nomor Transaksi</th>
                 <th>Nama Produk</th>
-                <th>Satuan</th>
-                <th>Kategori</th>
-                <th>Harga Beli</th>
-                <th>Harga Jual</th>
-                <th>Stok</th>
+                <th>Qty</th>
+                <th>Harga</th>
                 </tr>
                 </thead>
                 <?php
-                  if(isset($listProduk)) :
+                  if(isset($listDetailPenjualan)) :
                   $html =null;
                   $no = 0;
-                  foreach($listProduk as $baris) :
+                  foreach($listDetailPenjualan as $baris) :
                   $no++;
                    $html .='<tr>';
                    $html .='<td>'. $no.'</td>';
-                   $html .='<td>'. $baris->kode_produk.'</td>';
+                   $html .='<td>'. $baris->no_transaksi.'</td>';
                    $html .='<td>'. $baris->nama_produk.'</td>';
-                   $html .='<td>'. $baris->nama_satuan.'</td>';
-                   $html .='<td>'. $baris->nama_kategori.'</td>';
-                   $html .='<td>'.number_format($baris->harga_beli,0,',','.').'</td>';
-                   $html .='<td>'.number_format($baris->harga_jual,0,',','.').'</td>';
-                   $html .='<td>'. $baris->stok.'</td>';
+                   $html .='<td>'. $baris->qty.'</td>';
+                   $html .='<td>'.number_format($baris->total_harga,0,',','.').'</td>';
                    $html .='</tr>';
                     endforeach;
                     echo $html;

@@ -106,4 +106,21 @@ class MProduk extends Model
         $queryproduk=$produk->query("CALL StokBarang()")->getResult();
         return $queryproduk;
     }
+
+    public function getLastId()
+{
+    $lastRow = $this->db->table($this->table)
+        ->orderBy('id_produk', 'DESC')
+        ->limit(1)
+        ->get()
+        ->getRow();
+    
+    return $lastRow ? $lastRow->id_produk : null;
+}
+public function getNextId()
+{
+    $lastId = $this->getLastId();
+    return $lastId ? $lastId + 1 : null;
+}
+
 }

@@ -63,8 +63,8 @@ if (session()->has('hapus')) {
                 <th>Nama Produk</th>
                 <th>Satuan</th>
                 <th>Kategori</th>
-                <th>Harga Jual</th>
                 <th>Harga Beli</th>
+                <th>Harga Jual</th>
                 <th>Stok</th>
                 <th>Aksi</th>
                 </tr>
@@ -111,6 +111,7 @@ if (session()->has('hapus')) {
               <div class="col-lg-6">
             <div class="mb-3">
               <label class="form-label">Kode Produk</label>
+              <input type="text" class = "form-control" name ="id_produk" value="<?=$lastProductId?>" readonly>
               <input type="text" class="form-control" name="txtkodeproduk" placeholder="Silahkan masukkan kode produk">
             </div>
             </div>
