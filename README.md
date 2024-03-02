@@ -38,6 +38,6 @@ CETAK LAPORAN STOK
 ![Teks Alternatif](https://github.com/naylasalsabila20/UKK-SCADA-POS/blob/main/demolaporanstok.png)
 
 Laporan penjualan
-![image](https://github.com/naylasalsabila20/UKK-SCADA-POS/assets/154570991/6df4faea-de37-4f56-b719-5a6b7986a1be)
+![Teks Alternatif](https://github.com/naylasalsabila20/UKK-SCADA-POS/blob/main/demolaporanpenjualan.png)
 
 
